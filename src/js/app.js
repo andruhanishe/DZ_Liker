@@ -10,8 +10,14 @@ class PostWidget {
 
     init() {
         this.parentEl.innerHTML = `
-        <h1>Список постов</h1>
-        <div data-id="list"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <h2>Цитатник</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div data-id="list"></div>
+            </div>
+        </div>
         `;
 
         this.listEl = this.parentEl.querySelector("[data-id=list]");
@@ -33,10 +39,15 @@ class PostWidget {
             const el = document.createElement('div');
             el.className = 'post';
             el.innerHTML = `
-            <p>${post.content}</p>
-            <button data-action="like">+</button>
-            <p>${post.likes}</p>
-            <button data-action="dislike">-</button>
+            <h4>${post.headline}</h4>
+            <div class="content">${post.content}</div>
+            <div class="likestatus">
+                <button data-action="like" class="rating">+</button>
+                <div class="rating score">${post.likes}</div>
+                <button data-action="dislike" class="rating">-</button>
+            </div>
+            
+            
             `;
 
             this.listEl.appendChild(el);
@@ -62,35 +73,41 @@ const manager = new PostManager();
 
 manager.addPost(
     new Post(
-        'Content 1',
-        5,
+        'Пост 1',
+        'Она: ответь мне, только честно, да или нет, хорошо?\nОн: спрашивай\nОна: почему мужчины смеются над блондинками?\nОн: да',
+        7,
     )
 );
 manager.addPost(
     new Post(
-        'Content 2',
+        'Пост 2',
+        'Apтиcты нoʙoгoднeй пpoгрaммы Первого канала cтpoгo дeлятcя нa двe гpyппы: "Этo ктo вooбщe тaкoй?" и "Гocпoди, oн eщё жив?!"',
         8,
     )
 );
 manager.addPost(
     new Post(
-        'Content 3',
+        'Пост 3',
+        'xxx:\n' +
+        'Дочка притащила полгода назад маленького пушистого котенка. Огненно рыжего. Назвали его по приколу Пожар. Все бы ничего, но весь фейл мы ощутили только когда взяли его на дачу и он немного потерялся...',
         -11,
     )
 );
 manager.addPost(
     new Post(
-        'Content 4',
-        15,
+        'Пост 4',
+        'Ехал сегодня в такси. Водитель был в прекрасном настроении: "Я люблю свою работу, - говорит он, - Сам себе начальник, никто мне не указ." А я ему: "Здесь налево".\n',
+        5,
     )
 );
 manager.addPost(
     new Post(
-        'Content 5',
-        -23,
+        'Пост 5',
+        'ххх: Заметив дыру на футболке, я уже было передумал заходить и хотел вернуться. Но тут она порылась в сумочке и выудив пластырь заклеила дыру с изнанки. Оставшиеся видимыми части пластыря закрасила черной ручкой. Все, говорит, пошли. Вот тогда то я и понял что это моя будущая жена.',
+        -5,
     )
 );
 
-const content = document.getElementById('content');
+const content = document.getElementById('root');
 
 const liker = new PostWidget(content, manager);

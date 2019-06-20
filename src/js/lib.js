@@ -1,5 +1,6 @@
 export class Post {
-    constructor(content, likes) {
+    constructor(headline, content, likes) {
+        this.headline = headline;
         this.content = content;
         this.likes = likes;
     }
