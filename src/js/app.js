@@ -22,6 +22,11 @@ class PostWidget {
     }
 
     redrawPosts(posts) {
+        this.manager.filterByLikes();
+        console.log(posts);
+
+        this.manager.sortByLikes();
+
         this.listEl.innerHTML = '';
 
         for (const post of posts) {
@@ -38,6 +43,15 @@ class PostWidget {
             this.likeEl = el.querySelector("[data-action=like]");
             this.dislikeEl = el.querySelector("[data-action=dislike]");
 
+            this.likeEl.addEventListener('click', () => {
+                post.like();
+                this.redrawPosts(posts);
+            });
+
+            this.dislikeEl.addEventListener('click', () => {
+                post.dislike();
+                this.redrawPosts(posts);
+            });
 
         }
     }
