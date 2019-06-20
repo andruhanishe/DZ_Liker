@@ -21,6 +21,26 @@ class PostWidget {
 
     }
 
+    redrawPosts(posts) {
+        this.listEl.innerHTML = '';
+
+        for (const post of posts) {
+            const el = document.createElement('div');
+            el.className = 'post';
+            el.innerHTML = `
+            <p>${post.content}</p>
+            <button data-action="like">+</button>
+            <p>${post.likes}</p>
+            <button data-action="dislike">-</button>
+            `;
+
+            this.listEl.appendChild(el);
+            this.likeEl = el.querySelector("[data-action=like]");
+            this.dislikeEl = el.querySelector("[data-action=dislike]");
+
+
+        }
+    }
 
 }
 
