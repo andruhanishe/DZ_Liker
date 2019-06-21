@@ -36,3 +36,8 @@ export class PostManager {
 
 }
 
+export function calculate (a, b) {
+    const total = a + b;
+    return total;
+}
+
