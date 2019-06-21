@@ -18,8 +18,8 @@ export class PostManager {
         this.posts = [];
     }
 
-    addPost(posts) {
-        this.posts.push(posts);
+    addPost(post) {
+        this.posts.push(post);
     }
 
     sortByLikes() {
@@ -27,7 +27,7 @@ export class PostManager {
     }
 
     filterByLikes() {
-        this.posts.filter(o => o.likes > -10);
+        return this.posts.filter(o => o.likes > -10);
     }
 
     getAll() {

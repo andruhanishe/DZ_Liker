@@ -28,9 +28,6 @@ class PostWidget {
     }
 
     redrawPosts(posts) {
-        this.manager.filterByLikes();
-        console.log(posts);
-
         this.manager.sortByLikes();
 
         this.listEl.innerHTML = '';
@@ -56,15 +53,20 @@ class PostWidget {
 
             this.likeEl.addEventListener('click', () => {
                 post.like();
-                this.redrawPosts(posts);
+                this.onFilter();
             });
 
             this.dislikeEl.addEventListener('click', () => {
                 post.dislike();
-                this.redrawPosts(posts);
+                this.onFilter();
             });
-
         }
+    }
+
+    onFilter (){
+        const postsFiltered = this.manager.filterByLikes();
+        console.log(postsFiltered);
+        this.redrawPosts(postsFiltered);
     }
 
 }
@@ -90,7 +92,7 @@ manager.addPost(
         'Пост 3',
         'xxx:\n' +
         'Дочка притащила полгода назад маленького пушистого котенка. Огненно рыжего. Назвали его по приколу Пожар. Все бы ничего, но весь фейл мы ощутили только когда взяли его на дачу и он немного потерялся...',
-        -11,
+        -7,
     )
 );
 manager.addPost(
