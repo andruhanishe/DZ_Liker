@@ -64,7 +64,7 @@ class PostWidget {
     }
 
     onFilter (){
-        const postsFiltered = this.manager.filterByLikes();
+        const postsFiltered = this.manager.filterByLikes(limitDislikes);
         console.log(postsFiltered);
         this.redrawPosts(postsFiltered);
     }
@@ -110,6 +110,7 @@ manager.addPost(
     )
 );
 
+const limitDislikes = -10;
 const content = document.getElementById('root');
 
 const liker = new PostWidget(content, manager);

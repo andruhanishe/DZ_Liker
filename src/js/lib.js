@@ -26,8 +26,8 @@ export class PostManager {
         this.posts.sort((a, b) => b.likes - a.likes)
     }
 
-    filterByLikes() {
-        return this.posts.filter(o => o.likes > -10);
+    filterByLikes(limitDislikes) {
+        return this.posts.filter(o => o.likes > limitDislikes);
     }
 
     getAll() {
