@@ -6,7 +6,7 @@ install:
   - npm i codecov
 after_success:
   - npm run coverage && npx codecov
-  - mkdir dist
+  - mkdir -p dist
   - cp -R src/index.html src/js dist
 deploy:
   provider: pages
